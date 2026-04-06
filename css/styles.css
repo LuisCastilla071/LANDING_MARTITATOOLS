@@ -1,0 +1,225 @@
+/* css/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --primary: #1A365D; /* Azul Profundo */
+    --secondary: #C53030; /* Rojo Sobrio */
+    --accent: #2F855A; /* Verde Bosque */
+    --bg-light: #F7FAFC;
+    --text-dark: #2D3748;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Sólida y Alta Legibilidad */
+.navbar-solid {
+    background-color: var(--primary) !important;
+    padding: 1rem 0;
+    border-bottom: 5px solid var(--accent);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.nav-link-custom {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 0.5rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link-custom:hover {
+    color: var(--accent) !important;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+/* Espaciado de Secciones (Márgenes) */
+section {
+    padding: 120px 0; /* Márgenes verticales generosos */
+}
+
+.container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Transiciones Elegantes */
+.transition-pro {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hero con Parallax Suave */
+.hero-wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('../img/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    text-align: center;
+    transition: background-position 0.1s ease-out;
+}
+
+/* Tarjetas Académicas con Elevación Suave */
+.card-clean {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    height: 100%;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-clean:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+}
+
+/* Efecto de Brillo Sutil en Botones */
+.btn-solid {
+    background-color: var(--accent);
+    color: #FFFFFF !important;
+    padding: 20px 50px; /* Botones más grandes */
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(47, 133, 90, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-solid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: all 0.6s;
+}
+
+.btn-solid:hover::before {
+    left: 100%;
+}
+
+.btn-solid:hover {
+    background-color: #276749;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(47, 133, 90, 0.4);
+}
+
+/* Botón secundario (blanco) */
+.btn-outline-white {
+    background-color: #FFFFFF;
+    color: var(--primary) !important;
+    padding: 20px 50px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-white:hover {
+    background-color: #F7FAFC;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación de pulso para el botón principal */
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(47, 133, 90, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(47, 133, 90, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(47, 133, 90, 0); }
+}
+
+/* Animación de Flotación Continua */
+.floating-btn {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Efecto de Presión al Clic */
+.btn-solid:active, .btn-outline-white:active, .btn-github-large:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+}
+
+/* Animación de entrada para Texto */
+.btn-github-large {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px; /* Tamaño circular grande */
+    height: 70px;
+    background-color: var(--primary);
+    color: #FFFFFF !important;
+    border-radius: 50%;
+    font-size: 2.2rem;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    margin: 10px;
+}
+
+.btn-github-large:hover {
+    background-color: var(--accent);
+    transform: scale(1.2) rotate(360deg); /* Escala y rotación completa */
+    box-shadow: 0 15px 30px rgba(47, 133, 90, 0.4);
+    color: #FFFFFF !important;
+}
+
+/* Animación de entrada para Texto */
+.text-reveal {
+    animation: reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes reveal {
+    0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Barra de Progreso Refinada */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(to right, var(--accent), #48BB78);
+    z-index: 10000;
+    transition: width 0.1s ease-out;
+}

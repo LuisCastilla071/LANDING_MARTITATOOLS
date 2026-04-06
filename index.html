@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MartitaTools – Gestión Académica de Inventario</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- FontAwesome & AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barra de Progreso Superior -->
+    <div id="scroll-progress"></div>
+
+    <!-- Navbar Sólida y Ordenada -->
+    <nav class="navbar-solid fixed top-0 w-full z-50">
+        <div class="container-custom flex justify-between items-center">
+            <a href="#hero" class="text-white text-2xl font-bold tracking-tighter">
+                MARTITA<span class="text-green-400">TOOLS</span>
+            </a>
+            <div class="hidden md:flex space-x-2">
+                <a href="#hero" class="nav-link-custom">Inicio</a>
+                <a href="#proyecto" class="nav-link-custom">Proyecto</a>
+                <a href="#demo" class="nav-link-custom">Demo</a>
+                <a href="#beneficios" class="nav-link-custom">Beneficios</a>
+                <a href="creditos.html" class="ml-4 bg-green-600 text-white px-5 py-2 rounded font-bold hover:bg-green-700 transition-all">CRÉDITOS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-wrapper pt-32">
+        <div class="container-custom" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8">Control de Inventario <br><span class="text-green-400">para Martita Castilla</span></h1>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto opacity-90 leading-relaxed">
+                Una solución PWA robusta diseñada para optimizar la rentabilidad y la eficiencia operativa de ferreterías locales.
+            </p>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a href="#proyecto" class="btn-solid text-xl pulse-animation floating-btn">Explorar el Proyecto</a>
+                <a href="#demo" class="btn-outline-white text-xl font-bold">Ver Aplicación</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- El Proyecto (Márgenes y Estructura) -->
+    <section id="proyecto">
+        <div class="container-custom">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-blue-900 mb-4 uppercase">El Proyecto Académico</h2>
+                <div class="w-24 h-2 bg-green-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <h3 class="text-3xl font-bold mb-8 text-blue-900">Misión y Planificación</h3>
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Desarrollado bajo metodología Scrum, MartitaTools busca digitalizar procesos manuales para reducir pérdidas por stock estancado o mermas operativas.
+                    </p>
+                    <ul class="space-y-5">
+                        <li class="flex items-center text-lg font-medium"><i class="fas fa-check-circle text-green-600 mr-4 text-2xl"></i> Control centralizado de existencias.</li>
+                        <li class="flex items-center text-lg font-medium"><i class="fas fa-check-circle text-green-600 mr-4 text-2xl"></i> Interfaz amigable para usuarios finales.</li>
+                        <li class="flex items-center text-lg font-medium"><i class="fas fa-check-circle text-green-600 mr-4 text-2xl"></i> Base de datos en tiempo real con Supabase.</li>
+                    </ul>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-100" data-aos="fade-left">
+                    <img src="img/1.jpg" alt="Planificación" class="w-full h-[450px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo / App en Acción -->
+    <section id="demo" class="bg-gray-50">
+        <div class="container-custom">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-blue-900 mb-4 uppercase">Demo: App en Acción</h2>
+                <div class="w-24 h-2 bg-green-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-20 items-center mb-20">
+                <div class="rounded-3xl overflow-hidden shadow-2xl order-2 md:order-1" data-aos="zoom-in">
+                    <img src="img/2.jpg" alt="Captura de MartitaApp" class="w-full">
+                </div>
+                <div class="order-1 md:order-2" data-aos="fade-left">
+                    <h3 class="text-3xl font-bold mb-8 text-blue-900">Funcionalidades Principales</h3>
+                    <div class="space-y-6">
+                        <div class="card-clean">
+                            <i class="fas fa-sync text-3xl text-green-600 mb-4"></i>
+                            <h4 class="text-xl font-bold mb-2">Sincronización Supabase</h4>
+                            <p class="text-gray-600">Gestión de base de datos en tiempo real. Cada cambio se refleja instantáneamente en todos los dispositivos conectados.</p>
+                        </div>
+                        <div class="card-clean">
+                            <i class="fas fa-boxes text-3xl text-green-600 mb-4"></i>
+                            <h4 class="text-xl font-bold mb-2">Control de Stock Dinámico</h4>
+                            <p class="text-gray-600">Entradas, salidas y alertas automáticas de reabastecimiento para productos críticos de ferretería.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráficos Interactivos (Chart.js) -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-center text-blue-900 mb-12">Analítica en Tiempo Real</h3>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="card-clean p-6" data-aos="flip-up">
+                        <h4 class="text-xl font-bold mb-6 text-center">Rotación de Productos</h4>
+                        <canvas id="rotationChart"></canvas>
+                    </div>
+                    <div class="card-clean p-6" data-aos="flip-up" data-aos-delay="200">
+                        <h4 class="text-xl font-bold mb-6 text-center">Niveles de Inventario Mensual</h4>
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios (Grid Ordenada) -->
+    <section id="beneficios" class="bg-blue-900 text-white">
+        <div class="container-custom">
+            <h2 class="text-4xl font-bold text-center mb-20 uppercase tracking-widest" data-aos="fade-down">Beneficios Estratégicos</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center p-10 border border-white/20 rounded-3xl transition-pro hover:bg-white/5" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-chart-line text-6xl text-green-400 mb-8"></i>
+                    <h3 class="text-2xl font-bold mb-4">Rentabilidad</h3>
+                    <p class="opacity-80 leading-relaxed text-lg">Optimización de compras basada en la rotación real de inventario.</p>
+                </div>
+                <div class="text-center p-10 border border-white/20 rounded-3xl transition-pro hover:bg-white/5" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-shield-alt text-6xl text-green-400 mb-8"></i>
+                    <h3 class="text-2xl font-bold mb-4">Integridad</h3>
+                    <p class="opacity-80 leading-relaxed text-lg">Seguridad de datos garantizada con autenticación de Supabase.</p>
+                </div>
+                <div class="text-center p-10 border border-white/20 rounded-3xl transition-pro hover:bg-white/5" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-clock text-6xl text-green-400 mb-8"></i>
+                    <h3 class="text-2xl font-bold mb-4">Agilidad</h3>
+                    <p class="opacity-80 leading-relaxed text-lg">Reducción del 50% en el tiempo dedicado a auditorías de stock.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+        <div class="container-custom text-center">
+            <h2 class="text-3xl font-bold mb-6 tracking-widest">MARTITA<span class="text-green-500">TOOLS</span></h2>
+            <div class="w-16 h-1 bg-green-500 mx-auto mb-10"></div>
+            <p class="opacity-50 text-lg mb-8">&copy; 2026 Proyecto Académico de Ingeniería. Todos los derechos reservados.</p>
+            <a href="creditos.html" class="text-green-500 hover:text-white font-bold text-xl uppercase border-b-2 border-green-500 pb-2">Ver Créditos del Equipo</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/graficos.js"></script>
+</body>
+</html>
+r.net/npm/chart.js"></script>
+    <script src="js/graficos.js"></script>
+</body>
+</html>
