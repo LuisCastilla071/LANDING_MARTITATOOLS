@@ -66,12 +66,12 @@ body {
 
 /* Espaciado de Secciones (Márgenes) */
 section {
-    padding: 120px 0; /* Márgenes verticales generosos en escritorio */
+    padding: 60px 0; /* Espaciado más compacto en escritorio */
 }
 
 @media (max-width: 768px) {
     section {
-        padding: 60px 0; /* Menos margen en móviles */
+        padding: 30px 0; /* Espaciado mínimo en móviles */
     }
     
     .hero-wrapper {
@@ -197,12 +197,18 @@ section {
 .btn-outline-white {
     background-color: #FFFFFF;
     color: var(--primary) !important;
-    padding: 20px 50px;
+    padding: 16px 32px; /* Tamaño base moderado */
     border-radius: 14px;
     font-weight: 800;
     font-size: 1.1rem;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .btn-outline-white {
+        padding: 20px 50px; /* Solo en desktop */
+    }
 }
 
 .btn-outline-white:hover {
