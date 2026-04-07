@@ -44,13 +44,51 @@ body {
 
 /* Espaciado de Secciones (Márgenes) */
 section {
-    padding: 120px 0; /* Márgenes verticales generosos */
+    padding: 120px 0; /* Márgenes verticales generosos en escritorio */
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 60px 0; /* Menos margen en móviles */
+    }
+    
+    .hero-wrapper {
+        min-height: 70vh;
+        background-attachment: scroll; /* Desactivar parallax fijo en móviles para mejor rendimiento */
+    }
+    
+    .hero-wrapper h1 {
+        font-size: 2.8rem;
+    }
+    
+    #proyecto img {
+        height: 300px;
+    }
 }
 
 .container-custom {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Estilos para Menú Móvil */
+.nav-link-mobile {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Transiciones Elegantes */
