@@ -9,15 +9,35 @@
     --text-dark: #2D3748;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prohibir scroll horizontal de raíz */
+    position: relative;
+    touch-action: pan-y; /* Solo permitir scroll vertical */
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
     background-color: #FFFFFF;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Evitar scroll lateral */
-    touch-action: pan-y; /* Permitir scroll vertical pero no zoom táctil */
+}
+
+/* Contenedor de Gráficos Controlado */
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 300px; /* Altura fija para estabilidad en escritorio */
+    width: 100%;
+    max-width: 100%; /* Jamás exceder el ancho */
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px; /* Gráficos más compactos en móvil */
+    }
 }
 
 /* Navbar Sólida y Alta Legibilidad */

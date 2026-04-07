@@ -124,14 +124,18 @@
             <!-- Gráficos Interactivos (Chart.js) -->
             <div class="mt-20">
                 <h3 class="text-3xl font-bold text-center text-blue-900 mb-12">Analítica en Tiempo Real</h3>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="card-clean p-6" data-aos="flip-up">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="card-clean p-4 md:p-6" data-aos="fade-up">
                         <h4 class="text-xl font-bold mb-6 text-center">Rotación de Productos</h4>
-                        <canvas id="rotationChart"></canvas>
+                        <div class="chart-container">
+                            <canvas id="rotationChart"></canvas>
+                        </div>
                     </div>
-                    <div class="card-clean p-6" data-aos="flip-up" data-aos-delay="200">
+                    <div class="card-clean p-4 md:p-6" data-aos="fade-up" data-aos-delay="200">
                         <h4 class="text-xl font-bold mb-6 text-center">Niveles de Inventario Mensual</h4>
-                        <canvas id="inventoryChart"></canvas>
+                        <div class="chart-container">
+                            <canvas id="inventoryChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>

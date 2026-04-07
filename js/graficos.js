@@ -13,14 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     data: [45, 25, 20, 10],
                     backgroundColor: ['#1A365D', '#2F855A', '#C53030', '#ED8936'],
                     borderWidth: 0,
-                    hoverOffset: 20
+                    hoverOffset: 10
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false, /* Permitir que use la altura del contenedor CSS */
                 plugins: {
                     legend: { position: 'bottom' }
                 },
-                cutout: '70%'
+                cutout: '65%'
             }
         });
     }
@@ -34,10 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     label: 'Nivel de Stock',
                     data: [850, 1200, 1050, 1400, 1500],
                     backgroundColor: 'rgba(47, 133, 90, 0.8)',
-                    borderRadius: 10,
+                    borderRadius: 5,
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     y: { beginAtZero: true, grid: { display: false } },
                     x: { grid: { display: false } }
