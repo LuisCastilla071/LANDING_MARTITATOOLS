@@ -16,6 +16,8 @@ body {
     background-color: #FFFFFF;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Evitar scroll lateral */
+    touch-action: pan-y; /* Permitir scroll vertical pero no zoom táctil */
 }
 
 /* Navbar Sólida y Alta Legibilidad */
@@ -185,7 +187,7 @@ section {
 
 .btn-outline-white:hover {
     background-color: #F7FAFC;
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -213,7 +215,7 @@ section {
 
 /* Efecto de Presión al Clic */
 .btn-solid:active, .btn-outline-white:active, .btn-github-large:active {
-    transform: scale(0.95);
+    transform: translateY(2px);
     transition: transform 0.1s;
 }
 
