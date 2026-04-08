@@ -1,193 +1,482 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MartitaTools – Gestión Académica de Inventario</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Tailwind CSS -->
+    <title>MartitaTools - Control de Inventario para Ferreterías</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- FontAwesome & AOS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome para icono de GitHub confiable -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        dark: '#111827',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .team-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 9999px;
+            border: 6px solid white;
+            box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-img {
+            transform: scale(1.08);
+        }
+
+        .github-icon {
+            font-size: 48px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .github-icon:hover {
+            transform: scale(1.35);
+            color: #24292f;
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary selection:text-white overflow-x-hidden">
 
-    <!-- Barra de Progreso Superior -->
-    <div id="scroll-progress"></div>
-
-    <!-- Navbar Sólida y Ordenada -->
-    <nav class="navbar-solid fixed top-0 w-full z-50">
-        <div class="container-custom flex justify-between items-center">
-            <a href="#hero" class="text-white text-2xl font-bold tracking-tighter">
-                MARTITA<span class="text-green-400">TOOLS</span>
-            </a>
-            
-            <!-- Botón Hamburguesa (Solo Móvil) -->
-            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Menú Desktop -->
-            <div class="hidden md:flex space-x-2">
-                <a href="#hero" class="nav-link-custom">Inicio</a>
-                <a href="#proyecto" class="nav-link-custom">Proyecto</a>
-                <a href="#demo" class="nav-link-custom">Demo</a>
-                <a href="#beneficios" class="nav-link-custom">Beneficios</a>
-                <a href="creditos.html" class="ml-4 bg-green-600 text-white px-5 py-2 rounded font-bold hover:bg-green-700 transition-all">CRÉDITOS</a>
-            </div>
-        </div>
-
-        <!-- Menú Móvil Desplegable -->
-        <div id="mobile-menu" class="hidden md:hidden bg-blue-900 border-t-4 border-green-600 animate-fade-in">
-            <div class="flex flex-col p-6 space-y-4">
-                <a href="#hero" class="nav-link-mobile">Inicio</a>
-                <a href="#proyecto" class="nav-link-mobile">Proyecto</a>
-                <a href="#demo" class="nav-link-mobile">Demo</a>
-                <a href="#beneficios" class="nav-link-mobile">Beneficios</a>
-                <a href="creditos.html" class="bg-green-600 text-white px-5 py-3 rounded font-bold text-center">CRÉDITOS</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="hero" class="hero-wrapper pt-20 md:pt-32">
-        <div class="container-custom" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-bold mb-8">Control de Inventario <br><span class="text-green-400">para Martita Castilla</span></h1>
-            <p class="text-xl md:text-2xl mb-8 md:mb-12 max-w-3xl mx-auto opacity-90 leading-relaxed px-4">
-                Una solución PWA robusta diseñada para optimizar la rentabilidad y la eficiencia operativa de ferreterías locales.
-            </p>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 px-4">
-                <a href="#proyecto" data-aos="fade-up" data-aos-delay="400" class="btn-solid text-lg md:text-xl pulse-animation floating-btn w-full md:w-auto">Explorar el Proyecto</a>
-                <a href="#demo" data-aos="fade-up" data-aos-delay="600" class="btn-outline-white text-lg md:text-xl font-bold pulse-animation floating-btn w-full md:w-auto">Ver Aplicación</a>
+    <!-- NAVEGACIÓN -->
+    <header class="fixed w-full glass-effect shadow-sm z-50 transition-all duration-500 transform translate-y-0" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2 group cursor-pointer">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold group-hover:rotate-12 transition-transform duration-300">🛠️</div>
+                    <span class="font-bold text-xl tracking-tight text-dark group-hover:text-primary transition-colors duration-300">Martita<span class="text-secondary">Tools</span></span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#problema" class="relative text-gray-600 hover:text-primary transition-colors text-sm font-medium group">
+                        El Problema
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#solucion" class="relative text-gray-600 hover:text-primary transition-colors text-sm font-medium group">
+                        Beneficios
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#faq" class="relative text-gray-600 hover:text-primary transition-colors text-sm font-medium group">
+                        FAQ
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+                <div class="flex items-center">
+                    <a href="#cta-final" class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:bg-indigo-700 hover:shadow-lg hover:-translate-y-0.5 transform transition-all duration-300 text-sm">
+                        Probar la Demo
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- El Proyecto (Márgenes y Estructura) -->
-    <section id="proyecto">
-        <div class="container-custom">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-blue-900 mb-4 uppercase">El Proyecto Académico</h2>
-                <div class="w-24 h-2 bg-green-600 mx-auto rounded-full"></div>
+    <!-- TOAST EDUCATIVO -->
+    <div class="fixed bottom-4 right-4 z-50 max-w-sm bg-white p-4 rounded-xl shadow-2xl border-l-4 border-secondary animate-bounce-slow" id="ux-toast" style="animation: bounce 2s infinite;">
+        <div class="flex items-start gap-3">
+            <i data-lucide="lightbulb" class="text-secondary w-6 h-6 flex-shrink-0 mt-1"></i>
+            <div>
+                <h4 class="font-bold text-sm text-dark">💡 Nota sobre UX/UI</h4>
+                <p class="text-xs text-gray-600 mt-1">Hagan scroll. Noten cómo los elementos aparecen suavemente y cómo reaccionan los botones. <strong>La animación guía el ojo y reduce fricción.</strong></p>
+                <button onclick="document.getElementById('ux-toast').style.display='none'" class="text-xs text-gray-400 hover:text-gray-800 mt-2 underline">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left z-10 animate-on-scroll">
+                    <div class="inline-block bg-indigo-100 text-primary px-3 py-1 rounded-full text-sm font-semibold mb-6 tracking-wide">
+                        PWA para Ferreterías Locales
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-dark leading-tight mb-6 tracking-tight">
+                        Controla el inventario de tu ferretería <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">sin errores ni estrés</span>.
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Olvídate de los faltantes, el stock muerto y las horas contando productos. MartitaTools te da control total en tiempo real desde tu celular.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#cta-final" class="group bg-primary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/50 hover:-translate-y-1 flex items-center justify-center gap-2 overflow-hidden relative">
+                            <span class="absolute top-0 left-0 w-full h-full bg-white opacity-0 group-hover:animate-[ping_0.5s_ease-in-out]"></span>
+                            <i data-lucide="smartphone" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            Probar Demo Gratis
+                        </a>
+                        <p class="text-sm text-gray-500 mt-3 sm:mt-0 sm:self-center">
+                            👉 Sin tarjeta • Funciona offline
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative mx-auto w-full max-w-md lg:max-w-none animate-on-scroll delay-200">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+                    
+                    <div class="aspect-[9/16] bg-gray-200 rounded-[3rem] shadow-2xl border-[8px] border-gray-800 flex items-center justify-center relative overflow-hidden group hover:border-primary transition-colors duration-500">
+                        <div class="absolute top-0 w-32 h-6 bg-gray-800 rounded-b-xl"></div>
+                        <div class="text-center p-6 transform group-hover:scale-105 transition-transform duration-500">
+                            <i data-lucide="package" class="w-16 h-16 text-secondary mx-auto mb-4"></i>
+                            <p class="text-gray-600 font-medium">Dashboard de Inventario en Tiempo Real</p>
+                            <p class="text-xs text-gray-500 mt-2">Aquí irá tu captura real de la app</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section id="problema" class="py-20 bg-dark text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll">¿Todavía gestionas tu ferretería con papel y Excel?</h2>
+            <p class="text-xl text-gray-400 mb-10 animate-on-scroll delay-100">
+                Estos son los dolores que viven a diario los dueños y encargados de ferreterías locales:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-12">
+                <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:bg-gray-700 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center text-red-400 mb-4">
+                        <i data-lucide="package-x" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Faltantes inesperados</h3>
+                    <p class="text-gray-400">El cliente pide un producto que crees que tienes… y no está. Venta perdida y cliente insatisfecho.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:bg-gray-700 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 animate-on-scroll delay-100">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center text-red-400 mb-4">
+                        <i data-lucide="trending-down" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Dinero muerto en stock</h3>
+                    <p class="text-gray-400">Productos que no se venden ocupan espacio y capital que podrías usar mejor.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:bg-gray-700 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 animate-on-scroll delay-200">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center text-red-400 mb-4">
+                        <i data-lucide="frown" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Horas perdidas contando</h3>
+                    <p class="text-gray-400">Auditorías manuales, errores humanos y estrés constante por no saber qué realmente tienes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIÓN / BENEFICIOS -->
+    <section id="solucion" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+                <h2 class="text-primary font-semibold tracking-wide uppercase text-sm mb-2">La Solución</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark mb-4">MartitaTools: Tu ferretería bajo control</h3>
+                <p class="text-lg text-gray-600">Deja atrás los métodos manuales y lleva tu negocio al siguiente nivel con una herramienta pensada para ferreteros reales.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div data-aos="fade-right">
-                    <h3 class="text-3xl font-bold mb-8 text-blue-900">Misión y Planificación</h3>
-                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-                        Desarrollado bajo metodología Scrum, MartitaTools busca digitalizar procesos manuales para reducir pérdidas por stock estancado o mermas operativas.
-                    </p>
-                    <ul class="space-y-5 inline-block text-left">
-                        <li class="flex items-center text-lg font-medium"><i class="fas fa-check-circle text-green-600 mr-4 text-2xl"></i> Control centralizado de existencias.</li>
-                        <li class="flex items-center text-lg font-medium"><i class="fas fa-check-circle text-green-600 mr-4 text-2xl"></i> Interfaz amigable para usuarios finales.</li>
-                        <li class="flex items-center text-lg font-medium"><i class="fas fa-check-circle text-green-600 mr-4 text-2xl"></i> Base de datos en tiempo real con Supabase.</li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 animate-on-scroll">
+                    <h4 class="text-2xl font-bold mb-4">Control total desde tu celular</h4>
+                    <p class="text-gray-600 mb-6">Registra entradas, salidas y obtén alertas inteligentes. Todo se sincroniza en tiempo real aunque estés sin internet.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-700 p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                            <div class="bg-green-100 p-1 rounded-full"><i data-lucide="check" class="text-secondary w-4 h-4"></i></div>
+                            Saber exactamente qué tienes en stock en cualquier momento
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                            <div class="bg-green-100 p-1 rounded-full"><i data-lucide="check" class="text-secondary w-4 h-4"></i></div>
+                            Reducir pérdidas por mermas y productos estancados
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                            <div class="bg-green-100 p-1 rounded-full"><i data-lucide="check" class="text-secondary w-4 h-4"></i></div>
+                            Tomar mejores decisiones de compra basadas en datos reales
+                        </li>
                     </ul>
                 </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-100" data-aos="fade-left">
-                    <img src="img/1.jpg" alt="Planificación" class="w-full h-[450px] object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo / App en Acción -->
-    <section id="demo" class="bg-gray-50">
-        <div class="container-custom">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-blue-900 mb-4 uppercase">Demo: App en Acción</h2>
-                <div class="w-24 h-2 bg-green-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-20 items-center mb-20">
-                <div class="rounded-3xl overflow-hidden shadow-2xl order-2 md:order-1" data-aos="fade-up">
-                    <img src="img/2.jpg" alt="Captura de MartitaApp" class="w-full">
-                </div>
-                <div class="order-1 md:order-2" data-aos="fade-left">
-                    <h3 class="text-3xl font-bold mb-8 text-blue-900">Funcionalidades Principales</h3>
-                    <div class="space-y-6">
-                        <div class="card-clean">
-                            <i class="fas fa-sync text-3xl text-green-600 mb-4"></i>
-                            <h4 class="text-xl font-bold mb-2">Sincronización Supabase</h4>
-                            <p class="text-gray-600">Gestión de base de datos en tiempo real. Cada cambio se refleja instantáneamente en todos los dispositivos conectados.</p>
-                        </div>
-                        <div class="card-clean">
-                            <i class="fas fa-boxes text-3xl text-green-600 mb-4"></i>
-                            <h4 class="text-xl font-bold mb-2">Control de Stock Dinámico</h4>
-                            <p class="text-gray-600">Entradas, salidas y alertas automáticas de reabastecimiento para productos críticos de ferretería.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gráficos Interactivos (Chart.js) -->
-            <div class="mt-20">
-                <h3 class="text-3xl font-bold text-center text-blue-900 mb-12">Analítica en Tiempo Real</h3>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="card-clean p-4 md:p-6" data-aos="fade-up">
-                        <h4 class="text-xl font-bold mb-6 text-center">Rotación de Productos</h4>
-                        <div class="chart-container">
-                            <canvas id="rotationChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="card-clean p-4 md:p-6" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="text-xl font-bold mb-6 text-center">Niveles de Inventario Mensual</h4>
-                        <div class="chart-container">
-                            <canvas id="inventoryChart"></canvas>
-                        </div>
+                <div class="order-1 md:order-2 bg-indigo-50 rounded-2xl aspect-video flex items-center justify-center border border-indigo-100 group overflow-hidden cursor-pointer animate-on-scroll delay-200">
+                    <div class="transform group-hover:scale-110 transition-transform duration-700 text-center">
+                        <i data-lucide="bar-chart-3" class="w-12 h-12 text-indigo-300 mx-auto mb-2"></i>
+                        <p class="text-indigo-400 font-medium">Vista del Dashboard de MartitaTools</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Beneficios (Grid Ordenada) -->
-    <section id="beneficios" class="bg-blue-900 text-white">
-        <div class="container-custom">
-            <h2 class="text-4xl font-bold text-center mb-10 uppercase tracking-widest" data-aos="fade-down">Beneficios Estratégicos</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="text-center p-10 border border-white/20 rounded-3xl transition-pro hover:bg-white/5" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-chart-line text-6xl text-green-400 mb-8"></i>
-                    <h3 class="text-2xl font-bold mb-4">Rentabilidad</h3>
-                    <p class="opacity-80 leading-relaxed text-lg">Optimización de compras basada en la rotación real de inventario.</p>
+    <!-- CÓMO FUNCIONA -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-dark mb-12 animate-on-scroll">Empieza en solo 3 pasos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gray-200 -z-10 overflow-hidden">
+                    <div class="w-full h-full bg-primary origin-left scale-x-0 transition-transform duration-1000 ease-out animate-on-scroll-line" id="progress-line"></div>
                 </div>
-                <div class="text-center p-10 border border-white/20 rounded-3xl transition-pro hover:bg-white/5" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-shield-alt text-6xl text-green-400 mb-8"></i>
-                    <h3 class="text-2xl font-bold mb-4">Integridad</h3>
-                    <p class="opacity-80 leading-relaxed text-lg">Seguridad de datos garantizada con autenticación de Supabase.</p>
+                
+                <div class="flex flex-col items-center animate-on-scroll">
+                    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 mb-6 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                        <span class="absolute -top-2 -right-2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">1</span>
+                        <i data-lucide="user-plus" class="w-10 h-10 text-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Regístrate</h3>
+                    <p class="text-gray-600 text-sm px-4">Crea tu cuenta en menos de 30 segundos.</p>
                 </div>
-                <div class="text-center p-10 border border-white/20 rounded-3xl transition-pro hover:bg-white/5" data-aos="fade-up" data-aos-delay="600">
-                    <i class="fas fa-clock text-6xl text-green-400 mb-8"></i>
-                    <h3 class="text-2xl font-bold mb-4">Agilidad</h3>
-                    <p class="opacity-80 leading-relaxed text-lg">Reducción del 50% en el tiempo dedicado a auditorías de stock.</p>
+                <div class="flex flex-col items-center animate-on-scroll delay-100">
+                    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 mb-6 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                        <span class="absolute -top-2 -right-2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">2</span>
+                        <i data-lucide="package" class="w-10 h-10 text-primary group-hover:rotate-12 transition-transform duration-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Carga tu inventario</h3>
+                    <p class="text-gray-600 text-sm px-4">Agrega tus productos o importa desde Excel.</p>
+                </div>
+                <div class="flex flex-col items-center animate-on-scroll delay-200">
+                    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 mb-6 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                        <span class="absolute -top-2 -right-2 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">3</span>
+                        <i data-lucide="rocket" class="w-10 h-10 text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">¡Controla y vende más!</h3>
+                    <p class="text-gray-600 text-sm px-4">Recibe alertas y toma decisiones inteligentes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-16">
-        <div class="container-custom text-center">
-            <h2 class="text-3xl font-bold mb-6 tracking-widest">MARTITA<span class="text-green-500">TOOLS</span></h2>
-            <div class="w-16 h-1 bg-green-500 mx-auto mb-10"></div>
-            <p class="opacity-50 text-lg mb-8">&copy; 2026 Proyecto Académico de Ingeniería. Todos los derechos reservados.</p>
-            <a href="creditos.html" class="text-green-500 hover:text-white font-bold text-xl uppercase border-b-2 border-green-500 pb-2">Ver Créditos del Equipo</a>
+    <!-- PRUEBA SOCIAL -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-dark mb-4 animate-on-scroll">Lo que dicen los primeros usuarios</h2>
+            <p class="text-gray-600 mb-12 max-w-2xl mx-auto animate-on-scroll delay-100">Proyecto en fase beta probado en ferreterías reales.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-8 rounded-2xl text-left shadow-sm border border-gray-100 hover:shadow-lg hover:bg-white transition-all duration-300 transform hover:-translate-y-1 animate-on-scroll">
+                    <div class="flex text-yellow-400 mb-4">
+                        ★★★★☆
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"Ya no pierdo ventas por faltantes. Ahora sé exactamente qué tengo y qué debo pedir."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-dark">Juan Carlos Ramírez</p>
+                            <p class="text-sm text-gray-500">Dueño - Ferretería El Constructor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIENCIA -->
+    <section class="py-20 bg-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-dark">¿Para quién es MartitaTools?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-secondary hover:shadow-md transition-shadow animate-on-scroll">
+                    <h3 class="font-bold text-xl mb-2 flex items-center gap-2"><i data-lucide="check-circle-2" class="text-secondary"></i> Perfecto para</h3>
+                    <p class="text-gray-600">Ferreterías pequeñas y medianas, maestros de obra que manejan material propio y dueños que quieren crecer sin caos.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition-shadow animate-on-scroll delay-100">
+                    <h3 class="font-bold text-xl mb-2 flex items-center gap-2"><i data-lucide="x-octagon" class="text-red-500"></i> No es para</h3>
+                    <p class="text-gray-600">Grandes cadenas con sistemas ERP complejos o negocios que no manejan inventario físico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-dark mb-12 animate-on-scroll">Preguntas frecuentes</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-gray-50 rounded-xl cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 animate-on-scroll">
+                    <summary class="flex justify-between items-center font-medium p-6">
+                        <span class="text-lg group-hover:text-primary transition-colors">¿Funciona sin internet?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 bg-white p-1 rounded-full shadow-sm">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-600 px-6 pb-6 pt-0">Sí. Es una Progressive Web App (PWA). Funciona offline y se sincroniza cuando recuperas conexión.</div>
+                </details>
+                <details class="group bg-gray-50 rounded-xl cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 animate-on-scroll">
+                    <summary class="flex justify-between items-center font-medium p-6">
+                        <span class="text-lg group-hover:text-primary transition-colors">¿Es gratis?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 bg-white p-1 rounded-full shadow-sm">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-600 px-6 pb-6 pt-0">Sí, completamente gratis durante la fase beta del proyecto académico.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- URGENCIA -->
+    <section class="py-12 bg-orange-50 border-y border-orange-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
+            <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full font-medium mb-4 hover:bg-orange-200 transition-colors">
+                <i data-lucide="clock" class="w-5 h-5 animate-pulse"></i>
+                Acceso beta limitado
+            </div>
+            <p class="text-lg text-gray-700">Solo estamos aceptando ferreterías para probar la versión beta. Quedan pocos cupos.</p>
+        </div>
+    </section>
+
+    <!-- EQUIPO - ICONO DE GITHUB CON FONT AWESOME -->
+    <section id="equipo" class="py-20 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold text-dark mb-4">El equipo fundador</h2>
+                <p class="text-gray-600 mb-12 max-w-3xl mx-auto">Estudiantes de Ingeniería apasionados por resolver problemas reales del sector ferretero.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+                <!-- Luis Javier -->
+                <div class="team-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll delay-100">
+                    <div class="mx-auto mb-6 overflow-hidden">
+                        <img src="img/Luis.png" alt="Luis Javier Castilla" class="team-img mx-auto">
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-1">Luis Javier Castilla</h3>
+                    <p class="text-secondary font-medium text-base mb-4">Desarrollador Fullstack</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-10">Apasionado por crear soluciones prácticas y escalables.</p>
+                    <div class="flex justify-center">
+                        <a href="https://github.com/LuisCastilla071" target="_blank" class="github-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Denzel Steven -->
+                <div class="team-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll delay-200">
+                    <div class="mx-auto mb-6 overflow-hidden">
+                        <img src="img/Denzel.png" alt="Denzel Steven Marín" class="team-img mx-auto">
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-1">Denzel Steven Marín</h3>
+                    <p class="text-secondary font-medium text-base mb-4">Desarrollador Backend</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-10">Especialista en bases de datos en tiempo real con Supabase.</p>
+                    <div class="flex justify-center">
+                        <a href="https://github.com/denzelm2005" target="_blank" class="github-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ismael Adonis -->
+                <div class="team-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll delay-300">
+                    <div class="mx-auto mb-6 overflow-hidden">
+                        <img src="img/Ismael.png" alt="Ismael Adonis Romero" class="team-img mx-auto">
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-1">Ismael Adonis</h3>
+                    <p class="text-secondary font-medium text-base mb-4">Desarrollador Frontend</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-10">Enfocado en interfaces intuitivas y experiencia de usuario.</p>
+                    <div class="flex justify-center">
+                        <a href="https://github.com/ismaelis123" target="_blank" class="github-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="cta-final" class="py-24 bg-primary relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white opacity-10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-black opacity-10 blur-3xl"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">¿Listo para digitalizar tu ferretería?</h2>
+            <p class="text-xl text-indigo-100 mb-10">Prueba MartitaTools ahora. Es gratis durante la beta.</p>
+            <a href="#" class="inline-block bg-dark text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 hover:-translate-y-1 transition-all">
+                Acceder a la Demo
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-primary rounded text-white flex items-center justify-center text-xs font-bold">MT</div>
+                <span class="font-semibold text-white">MartitaTools</span>
+            </div>
+            <p class="text-sm">© 2026 Proyecto Académico - Ingeniería de Software</p>
+            <div class="flex gap-4">
+                <a href="creditos.html" class="hover:text-white">Créditos completos</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
-    <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/graficos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="js/graficos.js"></script>
-    </body>
-    </html>
-</html>
-</html>
-</html>
-</html>
+    <!-- ESTILOS Y SCRIPTS -->
+    <style>
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+
+    <script>
+        lucide.createIcons();
+
+        // Header dinámico
+        const header = document.getElementById('main-header');
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md', 'bg-white/95');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95');
+            }
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                header.classList.add('-translate-y-full');
+            } else {
+                header.classList.remove('-translate-y-full');
+            }
+            lastScrollY = window.scrollY;
+        }, { passive: true });
+
+        // Animaciones reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    if (entry.target.id === 'progress-line') {
+                        entry.target.classList.add('scale-x-100');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animate-on-scroll, .animate-on-scroll-line').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
 </html>
