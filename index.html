@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MartitaTools - Control de Inventario</title>
+    <title>MartitaTools - Gestión de Inventario</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,41 +21,43 @@
         }
     </script>
     <style>
-        .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); }
-        .team-img { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .message-bubble { max-width: 85%; padding: 10px 14px; border-radius: 15px; margin-bottom: 8px; font-size: 0.9rem; }
+        .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); }
+        .team-img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 4px solid white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .message-bubble { max-width: 85%; padding: 10px 14px; border-radius: 15px; margin-bottom: 8px; font-size: 0.9rem; line-height: 1.4; }
         .user-bubble { background: #4F46E5; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
         .bot-bubble { background: #f1f5f9; color: #1e2937; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .chat-window { animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #chat-messages::-webkit-scrollbar { width: 4px; }
+        #chat-messages::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased">
+<body class="bg-gray-50 text-gray-900">
 
     <header class="fixed w-full glass-effect z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div class="bg-primary p-1.5 rounded-lg text-white">🛠️</div>
-                <span class="font-bold text-lg">Martita<span class="text-secondary">Tools</span></span>
+                <span class="font-bold text-xl">Martita<span class="text-secondary">Tools</span></span>
             </div>
             <nav class="hidden md:flex gap-6 text-sm font-medium">
-                <a href="#equipo" class="hover:text-primary">Nuestro Equipo</a>
-                <a href="#" class="bg-primary text-white px-4 py-2 rounded-full">Acceder</a>
+                <a href="#equipo" class="hover:text-primary">Equipo</a>
+                <a href="#" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-indigo-700">Demo</a>
             </nav>
         </div>
     </header>
 
-    <section class="pt-32 pb-16 px-4 max-w-7xl mx-auto text-center lg:text-left grid lg:grid-cols-2 gap-12 items-center">
+    <section class="pt-32 pb-16 px-4 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div>
-            <h1 class="text-5xl font-extrabold leading-tight mb-6">El futuro de tu <span class="text-primary">Ferretería</span> empieza aquí.</h1>
-            <p class="text-gray-600 text-lg mb-8">MartitaTools: La herramienta inteligente para gestionar inventarios sin dolores de cabeza.</p>
-            <button class="bg-primary text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-indigo-700 transition-all">Ver Planes</button>
+            <h1 class="text-5xl font-extrabold leading-tight mb-6">Controla tu inventario <span class="text-primary">en tiempo real</span>.</h1>
+            <p class="text-gray-600 text-lg mb-8">La solución inteligente diseñada para ferreterías modernas en Juigalpa y más allá.</p>
+            <div class="flex gap-4">
+                <button class="bg-primary text-white px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all">Empezar ahora</button>
+            </div>
         </div>
         <div class="flex justify-center">
-            <div class="w-64 h-[400px] bg-dark rounded-[2.5rem] border-[8px] border-gray-800 shadow-2xl flex items-center justify-center p-6">
+            <div class="w-64 h-[400px] bg-dark rounded-[2.5rem] border-[8px] border-gray-800 shadow-2xl flex items-center justify-center">
                 <div class="text-center text-white">
-                    <i data-lucide="shield-check" class="w-12 h-12 text-secondary mx-auto mb-4"></i>
-                    <p class="text-sm font-mono uppercase tracking-widest text-gray-400">Secure System</p>
+                    <i data-lucide="package-search" class="w-12 h-12 text-secondary mx-auto mb-4"></i>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">MartitaTools App</p>
                 </div>
             </div>
         </div>
@@ -63,41 +65,43 @@
 
     <section id="equipo" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16">Desarrollado por el Equipo MartitaTools</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <h2 class="text-3xl font-bold text-center mb-12">Equipo de Desarrollo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div>
-                    <img src="https://github.com/LuisCastilla071.png" class="team-img mx-auto mb-4" alt="Luis">
-                    <h3 class="font-bold text-xl">Luis Javier Castilla</h3>
-                    <p class="text-secondary">Fullstack Engineer</p>
+                    <img src="https://github.com/LuisCastilla071.png" class="team-img mx-auto mb-4">
+                    <h3 class="font-bold">Luis Javier Castilla</h3>
+                    <p class="text-secondary text-sm">Fullstack Developer</p>
                 </div>
                 <div>
-                    <img src="https://github.com/denzelm2005.png" class="team-img mx-auto mb-4" alt="Denzel">
-                    <h3 class="font-bold text-xl">Denzel Steven Marín</h3>
-                    <p class="text-secondary">Backend Architect</p>
+                    <img src="https://github.com/denzelm2005.png" class="team-img mx-auto mb-4">
+                    <h3 class="font-bold">Denzel Steven Marín</h3>
+                    <p class="text-secondary text-sm">Backend Developer</p>
                 </div>
                 <div>
-                    <img src="https://github.com/ismaelis123.png" class="team-img mx-auto mb-4" alt="Ismael">
-                    <h3 class="font-bold text-xl">Ismael Adonis Romero</h3>
-                    <p class="text-secondary">Frontend Designer</p>
+                    <img src="https://github.com/ismaelis123.png" class="team-img mx-auto mb-4">
+                    <h3 class="font-bold">Ismael Adonis Romero</h3>
+                    <p class="text-secondary text-sm">Frontend Developer</p>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="fixed bottom-6 right-6 z-[100]">
-        <button onclick="toggleChat()" class="w-14 h-14 bg-secondary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all">
+        <button onclick="toggleChat()" class="w-14 h-14 bg-secondary text-white rounded-full shadow-2xl flex items-center justify-center hover:rotate-12 transition-all">
             <i data-lucide="message-square"></i>
         </button>
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-2xl shadow-2xl overflow-hidden chat-window border">
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-2xl shadow-2xl overflow-hidden border">
             <div class="bg-secondary p-4 text-white flex justify-between items-center">
-                <span class="font-semibold text-sm">Asistente Virtual</span>
-                <button onclick="toggleChat()"><i data-lucide="minus" class="w-4 h-4"></i></button>
+                <span class="font-semibold text-sm flex items-center gap-2">
+                    <i data-lucide="bot" class="w-4 h-4"></i> Asistente MartitaTools
+                </span>
+                <button onclick="toggleChat()"><i data-lucide="x" class="w-4 h-4"></i></button>
             </div>
             <div id="chat-messages" class="h-80 p-4 overflow-y-auto bg-gray-50 flex flex-col gap-2">
-                <div class="bot-bubble message-bubble">¡Hola! Soy la IA de MartitaTools. ¿Cómo te ayudo con tu inventario?</div>
+                <div class="bot-bubble message-bubble">¡Hola! Soy tu asistente IA. ¿Tienes alguna duda sobre MartitaTools?</div>
             </div>
             <div class="p-3 bg-white border-t flex gap-2">
-                <input id="chat-input" type="text" placeholder="Escribe tu duda..." class="flex-1 bg-gray-100 border-none rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-secondary outline-none" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <input id="chat-input" type="text" placeholder="Pregunta algo..." class="flex-1 bg-gray-100 rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-secondary" onkeypress="if(event.key === 'Enter') sendMessage()">
                 <button onclick="sendMessage()" class="bg-secondary text-white p-2 rounded-lg"><i data-lucide="send" class="w-4 h-4"></i></button>
             </div>
         </div>
@@ -107,15 +111,14 @@
         lucide.createIcons();
 
         function toggleChat() {
-            const chat = document.getElementById('chat-window');
-            chat.classList.toggle('hidden');
+            document.getElementById('chat-window').classList.toggle('hidden');
         }
 
         function addMessage(text, isUser) {
             const container = document.getElementById('chat-messages');
             const div = document.createElement('div');
             div.className = `message-bubble ${isUser ? 'user-bubble' : 'bot-bubble'}`;
-            // Limpiar Markdown básico
+            // Limpieza de Markdown (elimina asteriscos)
             div.innerText = text.replace(/\*\*/g, '').replace(/\*/g, '');
             container.appendChild(div);
             container.scrollTop = container.scrollHeight;
@@ -130,9 +133,8 @@
             input.value = '';
 
             const API_KEY = "AIzaSyDIEPuExzmzL4c2xBN8CHoBRmC25dWe4Tc";
-            
-            // INTENTO CON MODELO GEMINI-PRO EN V1 (MÁS ESTABLE)
-            const url = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+            // Ruta para Gemini 1.5 Flash (V1Beta es más flexible con claves nuevas)
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
             try {
                 const response = await fetch(url, {
@@ -140,7 +142,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{
-                            parts: [{ text: message + ". Responde como un asistente experto de la app MartitaTools. Sé breve." }]
+                            parts: [{ text: message + ". Responde como el asistente de la app MartitaTools. Sé breve y amable." }]
                         }]
                     })
                 });
@@ -151,26 +153,11 @@
                     const botResponse = data.candidates[0].content.parts[0].text;
                     addMessage(botResponse, false);
                 } else {
-                    // Si el modelo pro falla, intentamos automáticamente con flash en la misma URL
-                    const fallbackUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-                    const fallbackResponse = await fetch(fallbackUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: message }] }]
-                        })
-                    });
-                    const fallbackData = await fallbackResponse.json();
-                    
-                    if (fallbackResponse.ok) {
-                        addMessage(fallbackData.candidates[0].content.parts[0].text, false);
-                    } else {
-                        console.error("Ambos modelos fallaron:", data);
-                        addMessage("Lo siento, el servicio de IA está en mantenimiento. Intenta de nuevo.", false);
-                    }
+                    console.error("Error API:", data);
+                    addMessage("Lo siento, estoy teniendo problemas para responder. Verifica tu conexión.", false);
                 }
             } catch (e) {
-                addMessage("Error de conexión. Verifica tu internet.", false);
+                addMessage("Error de conexión al servidor.", false);
             }
         }
     </script>
