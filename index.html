@@ -6,7 +6,6 @@
     <title>MartitaTools - Control de Inventario para Ferreterías</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Font Awesome para icono de GitHub confiable -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
@@ -16,9 +15,6 @@
                         primary: '#4F46E5',
                         secondary: '#10B981',
                         dark: '#111827',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -65,16 +61,8 @@
             padding: 12px 16px;
             border-radius: 20px;
         }
-        .user-bubble { 
-            background: #4F46E5; 
-            color: white; 
-            border-bottom-right-radius: 4px; 
-        }
-        .bot-bubble { 
-            background: #f1f5f9; 
-            color: #1e2937; 
-            border-bottom-left-radius: 4px; 
-        }
+        .user-bubble { background: #4F46E5; color: white; border-bottom-right-radius: 4px; }
+        .bot-bubble { background: #f1f5f9; color: #1e2937; border-bottom-left-radius: 4px; }
 
         .chat-window {
             animation: slideUp 0.3s ease forwards;
@@ -194,7 +182,7 @@
         </div>
     </section>
 
-    <!-- SOLUCIÓN / BENEFICIOS -->
+    <!-- SOLUCIÓN -->
     <section id="solucion" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
@@ -433,7 +421,7 @@
         </div>
     </footer>
 
-    <!-- CHATBOT CON GEMINI (CORREGIDO) -->
+    <!-- CHATBOT CON GEMINI -->
     <div class="fixed bottom-6 right-6 z-[100]">
         <button onclick="toggleChat()" 
                 class="w-16 h-16 bg-secondary hover:bg-emerald-600 text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95">
@@ -474,19 +462,6 @@
         </div>
     </div>
 
-    <!-- ESTILOS Y SCRIPTS -->
-    <style>
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-
     <script>
         lucide.createIcons();
 
@@ -524,7 +499,7 @@
             observer.observe(el);
         });
 
-        // ==================== CHATBOT CON GEMINI (VERSIÓN CORREGIDA) ====================
+        // CHATBOT CON GEMINI
         function toggleChat() {
             document.getElementById('chat-window').classList.toggle('hidden');
         }
@@ -578,7 +553,6 @@
             }
         }
 
-        // Cerrar chat con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape") {
                 document.getElementById('chat-window').classList.add('hidden');
