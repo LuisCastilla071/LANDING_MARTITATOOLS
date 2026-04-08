@@ -61,8 +61,16 @@
             padding: 12px 16px;
             border-radius: 20px;
         }
-        .user-bubble { background: #4F46E5; color: white; border-bottom-right-radius: 4px; }
-        .bot-bubble { background: #f1f5f9; color: #1e2937; border-bottom-left-radius: 4px; }
+        .user-bubble { 
+            background: #4F46E5; 
+            color: white; 
+            border-bottom-right-radius: 4px; 
+        }
+        .bot-bubble { 
+            background: #f1f5f9; 
+            color: #1e2937; 
+            border-bottom-left-radius: 4px; 
+        }
 
         .chat-window {
             animation: slideUp 0.3s ease forwards;
@@ -182,7 +190,7 @@
         </div>
     </section>
 
-    <!-- SOLUCIÓN / BENEFICIOS -->
+    <!-- SOLUCIÓN -->
     <section id="solucion" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
@@ -499,7 +507,7 @@
             observer.observe(el);
         });
 
-        // CHATBOT CON GEMINI (versión corregida)
+        // ==================== CHATBOT CON GEMINI ====================
         function toggleChat() {
             document.getElementById('chat-window').classList.toggle('hidden');
         }
@@ -527,7 +535,7 @@
             container.scrollTop = container.scrollHeight;
 
             try {
-                const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCQDBsER65VQ37GQY_YxhMAtgEhXi37c_4', {
+                const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDIEPuExzmzL4c2xBN8CHoBRmC25dWe4Tc', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -553,6 +561,7 @@
             }
         }
 
+        // Cerrar con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape") {
                 document.getElementById('chat-window').classList.add('hidden');
