@@ -94,25 +94,48 @@
     <header class="fixed w-full glass-effect shadow-2xl z-50 transition-all duration-500" id="main-header">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
                     <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg group-hover:rotate-12 transition-transform">🛠️</div>
                     <span class="font-black text-3xl tracking-tighter text-white">Martita<span class="text-orange-500">Tools</span></span>
                 </div>
 
+                <!-- Desktop Nav -->
                 <nav class="hidden md:flex space-x-10">
                     <a href="#problema" class="text-slate-300 hover:text-white font-medium transition-colors text-lg">El Problema</a>
                     <a href="#solucion" class="text-slate-300 hover:text-white font-medium transition-colors text-lg">Beneficios</a>
                     <a href="#faq" class="text-slate-300 hover:text-white font-medium transition-colors text-lg">FAQ</a>
                 </nav>
 
+                <!-- Demo Button (Desktop) -->
                 <a href="https://wa.me/50586538380?text=Hola%2C%20quiero%20acceder%20a%20la%20demo%20de%20MartitaTools" target="_blank"
-                    class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3.5 rounded-2xl font-semibold shadow-lg shadow-orange-500/30 hover:shadow-xl transition-all">
+                    class="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3.5 rounded-2xl font-semibold shadow-lg shadow-orange-500/30 hover:shadow-xl transition-all">
                     Acceder a la Demo
                 </a>
+
+                <!-- Hamburger Button -->
+                <button id="hamburger-btn" class="md:hidden text-white p-2">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden bg-[#0F172A] py-6 px-6 border-t border-slate-700 md:hidden">
+                <div class="flex flex-col space-y-6 text-center">
+                    <a href="#problema" onclick="closeMobileMenu()" class="text-slate-300 hover:text-white font-medium text-xl py-2">El Problema</a>
+                    <a href="#solucion" onclick="closeMobileMenu()" class="text-slate-300 hover:text-white font-medium text-xl py-2">Beneficios</a>
+                    <a href="#faq" onclick="closeMobileMenu()" class="text-slate-300 hover:text-white font-medium text-xl py-2">FAQ</a>
+                    <a href="https://wa.me/50586538380?text=Hola%2C%20quiero%20acceder%20a%20la%20demo%20de%20MartitaTools" 
+                       target="_blank" onclick="closeMobileMenu()"
+                       class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg mt-4">
+                        Acceder a la Demo
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- Resto del contenido (igual que antes) -->
     <!-- HERO SECTION -->
     <section class="pt-32 pb-20 lg:pt-44 lg:pb-28 bg-[#020617]">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
@@ -134,8 +157,8 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="https://wa.me/50586538380?text=Hola%2C%20quiero%20acceder%20a%20la%20demo%20de%20MartitaTools" target="_blank"
-                            class="bg-orange-500 text-white px-10 py-5 rounded-3xl font-bold text-xl flex items-center justify-center gap-3 hover:bg-orange-600 transition-all shadow-xl">
-                            <i data-lucide="smartphone" class="w-7 h-7"></i>
+                            class="bg-orange-500 text-white px-8 py-4 rounded-3xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-orange-600 transition-all shadow-xl">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
                             Acceder a la Demo
                         </a>
                         <p class="text-sm text-slate-400 self-center">👉 Sin tarjeta • Funciona offline</p>
@@ -337,7 +360,7 @@
                     <h3 class="text-2xl font-bold text-white mb-1">Luis Javier Castilla</h3>
                     <p class="text-orange-500 font-medium mb-4">Desarrollador Fullstack</p>
                     <p class="text-slate-400 text-sm mb-10">Apasionado por crear soluciones prácticas y escalables.</p>
-                    <a href="https://github.com/LuisCastilla071" target="_blank" class="github-icon block text-center"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/LuisCastilla071" target="_blank" class="github-icon block text-center text-6xl"><i class="fab fa-github"></i></a>
                 </div>
                 <div class="team-card bg-[#0F172A] p-8 rounded-3xl border border-slate-800 fade-in">
                     <div class="mx-auto mb-6 overflow-hidden">
@@ -346,7 +369,7 @@
                     <h3 class="text-2xl font-bold text-white mb-1">Denzel Steven Marín</h3>
                     <p class="text-orange-500 font-medium mb-4">Desarrollador Backend</p>
                     <p class="text-slate-400 text-sm mb-10">Especialista en bases de datos en tiempo real con Supabase.</p>
-                    <a href="https://github.com/denzelm2005" target="_blank" class="github-icon block text-center"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/denzelm2005" target="_blank" class="github-icon block text-center text-6xl"><i class="fab fa-github"></i></a>
                 </div>
                 <div class="team-card bg-[#0F172A] p-8 rounded-3xl border border-slate-800 fade-in">
                     <div class="mx-auto mb-6 overflow-hidden">
@@ -355,7 +378,7 @@
                     <h3 class="text-2xl font-bold text-white mb-1">Ismael Adonis Romero</h3>
                     <p class="text-orange-500 font-medium mb-4">Desarrollador Frontend</p>
                     <p class="text-slate-400 text-sm mb-10">Enfocado en interfaces intuitivas y experiencia de usuario.</p>
-                    <a href="https://github.com/ismaelis123" target="_blank" class="github-icon block text-center"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/ismaelis123" target="_blank" class="github-icon block text-center text-6xl"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
@@ -386,29 +409,31 @@
     </footer>
 
     <!-- CHATBOT -->
-    <div class="fixed bottom-6 right-6 z-[100]">
-        <button onclick="toggleChat()" class="w-16 h-16 bg-orange-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
-            <i data-lucide="message-circle" class="w-8 h-8"></i>
+    <div class="fixed bottom-6 right-6 md:right-8 z-[100]">
+        <button onclick="toggleChat()" 
+                class="w-14 h-14 md:w-16 md:h-16 bg-orange-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+            <i data-lucide="message-circle" class="w-7 h-7 md:w-8 md:h-8"></i>
         </button>
 
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[340px] md:w-[420px] bg-[#0F172A] rounded-3xl shadow-2xl overflow-hidden border border-slate-700 chat-window">
-            <div class="bg-gradient-to-r from-orange-500 to-amber-500 p-6 text-white flex justify-between items-center">
+        <div id="chat-window" 
+             class="hidden absolute bottom-20 right-0 w-[320px] md:w-[380px] bg-[#0F172A] rounded-3xl shadow-2xl overflow-hidden border border-slate-700">
+            <div class="bg-gradient-to-r from-orange-500 to-amber-500 p-5 text-white flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <div class="bg-white/20 p-2 rounded-xl"><i data-lucide="bot" class="w-6 h-6"></i></div>
-                    <span class="font-bold">Asistente MartitaTools</span>
+                    <div class="bg-white/20 p-2 rounded-xl"><i data-lucide="bot" class="w-5 h-5"></i></div>
+                    <span class="font-bold text-base">Asistente MartitaTools</span>
                 </div>
-                <button onclick="toggleChat()"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button onclick="toggleChat()" class="p-1"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
 
-            <div id="chat-messages" class="h-80 p-6 overflow-y-auto bg-[#020617] flex flex-col gap-3 text-sm">
-                <div class="bot-bubble message-bubble">¡Hola! Soy el asistente de MartitaTools. ¿Qué duda tienes sobre la app o el inventario?</div>
+            <div id="chat-messages" class="h-72 md:h-80 p-5 overflow-y-auto bg-[#020617] flex flex-col gap-3 text-sm">
+                <div class="bot-bubble message-bubble">¡Hola! Soy el asistente de MartitaTools. ¿Qué duda tienes?</div>
             </div>
 
-            <div class="p-5 bg-[#0F172A] border-t border-slate-700 flex gap-3">
+            <div class="p-4 bg-[#0F172A] border-t border-slate-700 flex gap-2">
                 <input id="chat-input" type="text" placeholder="Escribe tu duda..."
-                    class="flex-1 bg-[#1E2937] text-white rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-orange-500"
+                    class="flex-1 bg-[#1E2937] text-white rounded-2xl px-5 py-3.5 outline-none focus:ring-2 focus:ring-orange-500 text-sm"
                     onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="sendMessage()" class="bg-orange-500 text-white p-4 rounded-2xl hover:bg-orange-600 transition-all">
+                <button onclick="sendMessage()" class="bg-orange-500 text-white p-3.5 rounded-2xl hover:bg-orange-600 transition-all">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -418,7 +443,34 @@
     <script>
         lucide.createIcons();
 
-        // Carrusel
+        // Hamburger Menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            const icon = hamburgerBtn.querySelector('i');
+            icon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        }
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = hamburgerBtn.querySelector('i');
+            if (icon.getAttribute('data-lucide') === 'menu') {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Carrusel (sin cambios)
         let currentSlide = 0;
         const track = document.getElementById('carousel-track');
         const totalSlides = 5;
@@ -442,14 +494,14 @@
         phoneMockup.addEventListener('mouseenter', stopAutoPlay);
         phoneMockup.addEventListener('mouseleave', startAutoPlay);
 
-        // Header
+        // Header scroll
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) header.classList.add('shadow-2xl');
             else header.classList.remove('shadow-2xl');
         });
 
-        // Fade In on Scroll
+        // Fade In
         function handleFadeIn() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(el => {
@@ -461,9 +513,7 @@
         }
 
         window.addEventListener('scroll', handleFadeIn);
-        window.addEventListener('load', () => {
-            setTimeout(handleFadeIn, 300);
-        });
+        window.addEventListener('load', () => setTimeout(handleFadeIn, 300));
 
         // Chatbot
         function toggleChat() {
